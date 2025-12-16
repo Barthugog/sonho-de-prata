@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonho de Prata - Joias</title>
+
+<style>
+/* FUNDO ESCURO COM IMAGEM */
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    color:#f5f5f5;
+
+    background-image: url("fundo.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* CAMADA ESCURA PARA LEITURA */
+.overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.75);
+    z-index:-1;
+}
+
+/* TOPO */
+header{
+    background: rgba(0,0,0,0.6);
+    padding:30px 20px;
+    text-align:center;
+    border-bottom:1px solid #444;
+}
+
+header h1{
+    margin:0;
+    font-size:32px;
+}
+
+header p{
+    margin-top:8px;
+    color:#ccc;
+}
+
+/* MENU */
+nav{
+    background: rgba(0,0,0,0.7);
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    color:#f5f5f5;
+    text-decoration:none;
+    margin:0 10px;
+    padding:8px 15px;
+    border-radius:5px;
+}
+
+nav a.active,
+nav a:hover{
+    background:#777;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+/* INÍCIO */
+.inicio-box{
+    background: rgba(20,20,20,0.9);
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    border:1px solid #444;
+}
+
+.inicio-box h2{
+    font-size:26px;
+}
+
+.inicio-box p{
+    margin:15px 0;
+    color:#ddd;
+}
+
+.inicio-box a{
+    display:inline-block;
+    background:#c0c0c0;
+    color:#000;
+    padding:12px 22px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* CATEGORIAS */
+.categorias{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.categorias button{
+    padding:10px 15px;
+    margin:5px;
+    border:none;
+    border-radius:5px;
+    background:#333;
+    color:#eee;
+    cursor:pointer;
+}
+
+.categorias button.active,
+.categorias button:hover{
+    background:#c0c0c0;
+    color:#000;
+}
+
+/* PRODUTOS */
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.product{
+    background: rgba(20,20,20,0.9);
+    border:1px solid #444;
+    border-radius:8px;
+    margin:10px;
+    padding:15px;
+    width:250px;
+    text-align:center;
+}
+
+.product img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:5px;
+}
+
+.product h3{
+    margin:10px 0;
+}
+
+.product p{
+    color:#ccc;
+}
+
+.product button{
+    background:#c0c0c0;
+    color:#000;
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.product button:hover{
+    background:#fff;
+}
+
+/* SOBRE */
+#about{
+    background: rgba(20,20,20,0.9);
+    padding:25px;
+    border-radius:10px;
+    border:1px solid #444;
+}
+
+/* RODAPÉ */
+footer{
+    background: rgba(0,0,0,0.6);
+    text-align:center;
+    padding:10px;
+    color:#aaa;
+    margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<header>
+<h1>Sonho de Prata</h1>
+<p>Joias em Prata 925 • Elegância e Brilho</p>
+</header>
+
+<nav>
+<a href="#" class="tab-link active" data-tab="home">Início</a>
+<a href="#" class="tab-link" data-tab="products">Produtos</a>
+<a href="#" class="tab-link" data-tab="about">Sobre</a>
+</nav>
+
+<div class="container">
+
+<!-- INÍCIO -->
+<div id="home" class="section active">
+<div class="inicio-box">
+<h2>✨ Bem-vindo ao Sonho de Prata ✨</h2>
+<p>Joias delicadas, modernas e feitas para brilhar com você.</p>
+<p>Escolha sua categoria e faça seu pedido pelo WhatsApp.</p>
+<a href="#" onclick="abrirProdutos()">Ver Produtos</a>
+</div>
+</div>
+
+<!-- PRODUTOS -->
+<div id="products" class="section">
+
+<h2 style="text-align:center">Nossos Produtos</h2>
+
+<div class="categorias">
+<button class="active" onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('colar')">Colar</button>
+<button onclick="filtrar('pulseira')">Pulseira</button>
+<button onclick="filtrar('brinco')">Brinco</button>
+<button onclick="filtrar('conjunto')">Conjunto</button>
+<button onclick="filtrar('berloque')">Berloque</button>
+</div>
+
+<div class="products">
+
+<div class="product colar">
+<img src="joia1.jpg">
+<h3>Colar de Prata</h3>
+<p>R$ valor</p>
+<button onclick="pedidoWhatsApp('Colar de Prata')">Fazer Pedido</button>
+</div>
+
+<div class="product pulseira">
+<img src="joia4.jpg">
+<h3>Pulseira de Prata</h3>
+<p>R$ valor</p>
+<button onclick="pedidoWhatsApp('Pulseira de Prata')">Fazer Pedido</button>
+</div>
+
+<div class="product brinco">
+<img src="joia3.jpg">
+<h3>Brincos de Prata</h3>
+<p>R$ valor</p>
+<button onclick="pedidoWhatsApp('Brincos de Prata')">Fazer Pedido</button>
+</div>
+
+<div class="product conjunto">
+<img src="joia2.jpg">
+<h3>Conjunto de Prata</h3>
+<p>R$ valor</p>
+<button onclick="pedidoWhatsApp('Conjunto de Prata')">Fazer Pedido</button>
+</div>
+
+<div class="product berloque">
+<img src="joia5.jpg">
+<h3>Berloque de Prata</h3>
+<p>R$ valor</p>
+<button onclick="pedidoWhatsApp('Berloque de Prata')">Fazer Pedido</button>
+</div>
+
+</div>
+</div>
+
+<!-- SOBRE -->
+<div id="about" class="section">
+<h2>Sobre Nós</h2>
+<p>
+Loja independente de joias em Prata 925.<br>
+Qualidade, elegância e confiança.<br><br>
+Site Pertence a Yasmin Moreira desenvolvido por <strong>Vitor Hugo Gonçalves Bernardes </strong>.
+</p>
+</div>
+
+</div>
+
+<footer>
+<p>&copy; 2025 Sonho de Prata</p>
+</footer>
+
+<script>
+const tabs = document.querySelectorAll('.tab-link');
+const sections = document.querySelectorAll('.section');
+
+tabs.forEach(tab=>{
+tab.onclick=e=>{
+e.preventDefault();
+tabs.forEach(t=>t.classList.remove('active'));
+sections.forEach(s=>s.classList.remove('active'));
+tab.classList.add('active');
+document.getElementById(tab.dataset.tab).classList.add('active');
+}
+});
+
+function abrirProdutos(){
+document.querySelector('[data-tab="products"]').click();
+}
+
+function filtrar(categoria){
+const produtos = document.querySelectorAll('.product');
+document.querySelectorAll('.categorias button')
+.forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+
+produtos.forEach(p=>{
+p.style.display =
+(categoria === 'todos' || p.classList.contains(categoria))
+? 'block' : 'none';
+});
+}
+
+function pedidoWhatsApp(produto){
+const numero = "5534988251827";
+const msg = `Olá! Quero fazer um pedido do produto: ${produto}`;
+window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
+}
+</script>
+
+</body>
+</html>
